@@ -67,6 +67,30 @@ public class MyConsole {
         }
     }
 
+    /**
+     * Method that allows printing a value of any type.
+     *
+     * @param message The message displayed on the console.
+     * @param <T>     The type of the message.
+     */
+
+    public <T> void printMessage(T message) {
+        System.out.println(message);
+    }
+
+    /**
+     * Method that prints an array of values of any type.
+     *
+     * @param message The array of messages displayed on the console.
+     * @param <T>     The type of the messages.
+     */
+
+    public <T> void printMessage(T[] message) {
+        for (T m : message) {
+            System.out.println(m);
+        }
+    }
+
 
     /**
      * This method allows you to obtain a value of type int.

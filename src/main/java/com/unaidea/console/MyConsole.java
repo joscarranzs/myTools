@@ -33,6 +33,41 @@ public class MyConsole {
     }
 
     /**
+     * Method to pause the console.
+     */
+
+    public void pause() {
+        try {
+            String osName = System.getProperty("os.name").toLowerCase();
+
+            if (osName.contains("windows")) {
+                // En Windows, limpia la consola con "cls"
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                // En Linux, valida la shell (bash o fish)
+                String shell = System.getenv("SHELL");
+                if (shell != null) {
+                    if (shell.contains("fish")) {
+                        // Pausa en fish shell
+                        System.out.println("Presiona Enter para continuar...");
+                        new ProcessBuilder("fish", "-c", "read").inheritIO().start().waitFor();
+                    } else if (shell.contains("bash")) {
+                        // Pausa en bash shell
+                        System.out.println("Presiona Enter para continuar...");
+                        new ProcessBuilder("bash", "-c", "read -p 'Presiona Enter para continuar...'").inheritIO().start().waitFor();
+                    } else {
+                        System.out.println("Shell no compatible para pausa.");
+                    }
+                } else {
+                    System.out.println("No se pudo determinar la shell.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Method to print a message on the console.
      *
      * @param message The function receives a message and prints it in the console.

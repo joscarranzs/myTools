@@ -9,6 +9,8 @@
 package com.unaidea.console;
 
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.function.Function;
 
 public class MyConsole {
@@ -51,6 +53,14 @@ public class MyConsole {
         }
     }
 
+    /**
+     * Method for any type of console input.
+     *
+     * @param message The function receives a message and prints it in the console.
+     * @param parser  The function receives a string and returns a type.
+     * @return The method returns a type T.
+     */
+
     public <T> T getInput(String message, Function<String, T> parser) {
         while (true) {
             try {
@@ -58,7 +68,36 @@ public class MyConsole {
                 String input = scanner.nextLine();
                 return parser.apply(input);
             } catch (Exception e) {
-                System.out.println("Invalid input: " + e.getMessage());
+                System.out.println("Invalid input. " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Method for input of any type for a console array.
+     *
+     * @param message The function receives a message and prints it in the console.
+     * @param parser  The function receives a string and returns a type.
+     * @return The method returns a list of types T.
+     */
+
+    public <T> List<T> getArrayInput(String message, Function<String, T> parser) {
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                String input = scanner.nextLine();
+
+                String[] parts = input.split(",\\s*");
+
+                List<T> values = new ArrayList<>();
+
+                for (String part : parts) {
+                    values.add(parser.apply(part));
+                }
+
+                return values;
+            } catch (Exception e) {
+                System.out.println("Invalid input. " + e.getMessage());
             }
         }
     }

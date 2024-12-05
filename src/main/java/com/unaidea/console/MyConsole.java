@@ -9,6 +9,7 @@
 package com.unaidea.console;
 
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class MyConsole {
     Scanner scanner = new Scanner(System.in);
@@ -50,70 +51,14 @@ public class MyConsole {
         }
     }
 
-    /**
-     * Method to request input of an integer value.
-     *
-     * @return Returns the integer value entered by the user.
-     */
-
-    public int getIntegerInput() {
-        while (true) {
-            try {
-                return Integer.parseInt(scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a valid integer value.");
-            }
-        }
-    }
-
-    /**
-     * Method to request input of an integer value.
-     *
-     * @param message The function receives a message and prints it in the console.
-     * @return Returns the integer value entered by the user.
-     */
-
-    public int getIntegerInput(String message) {
+    public <T> T getInput(String message, Function<String, T> parser) {
         while (true) {
             try {
                 System.out.print(message + " ");
-                return Integer.parseInt(scanner.nextLine());
+                String input = scanner.nextLine();
+                return parser.apply(input);
             } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a valid integer value.");
-            }
-        }
-    }
-
-    /**
-     * Method to request input of a float value.
-     *
-     * @return Returns the float value entered by the user.
-     */
-
-    public float getFloatInput() {
-        while (true) {
-            try {
-                return Float.parseFloat(scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a valid float value.");
-            }
-        }
-    }
-
-    /**
-     * Method to request input of a float value.
-     *
-     * @param message The function receives a message and prints it in the console.
-     * @return Returns the float value entered by the user.
-     */
-
-    public float getFloatInput(String message) {
-        while (true) {
-            try {
-                System.out.print(message + " ");
-                return Float.parseFloat(scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a valid float value.");
+                System.out.println("Invalid input: " + e.getMessage());
             }
         }
     }

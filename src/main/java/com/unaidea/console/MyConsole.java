@@ -36,27 +36,24 @@ public class MyConsole {
      * Method to pause the console.
      */
 
+
     public void pause() {
         try {
             String osName = System.getProperty("os.name").toLowerCase();
 
             if (osName.contains("windows")) {
-                new ProcessBuilder("cmd", "/c", "pause").inheritIO().start().waitFor();
+                // En Windows, limpia la consola y espera
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                System.out.print("Presiona Enter para continuar...");
             } else {
-                String shell = System.getenv("SHELL");
-                if (shell != null) {
-                    if (shell.contains("fish")) {
-                        new ProcessBuilder("fish", "-c", "read > /dev/null").inheritIO().start().waitFor();
-                    } else if (shell.contains("bash")) {
-                        new ProcessBuilder("bash", "-c", "read -p 'Presiona Enter para continuar...'").inheritIO().start().waitFor();
-                    } else {
-                        System.out.println("Presiona Enter para continuar...");
-                        new ProcessBuilder("sh", "-c", "read").inheritIO().start().waitFor();
-                    }
-                } else {
-                    System.out.println("No se pudo determinar la shell.");
-                }
+                // En Linux/Unix, muestra el mensaje y espera usando Scanner
+                System.out.print("Presiona Enter para continuar...");
             }
+
+            // Usa Scanner para esperar la entrada del usuario
+            Scanner scanner = new Scanner(System.in);
+            scanner.nextLine(); // Espera hasta que el usuario presione Enter
+            scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

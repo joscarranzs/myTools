@@ -8,7 +8,11 @@
 
 package com.unaidea.console;
 
+import java.util.Scanner;
+
 public class MyConsole {
+    Scanner scanner = new Scanner(System.in);
+
     /**
      * Method to clean the console, it works on linux and windows.
      */
@@ -53,11 +57,12 @@ public class MyConsole {
      */
 
     public int getIntegerInput() {
-        try {
-            return Integer.parseInt(System.console().readLine());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid integer value.");
+            }
         }
     }
 
@@ -69,11 +74,13 @@ public class MyConsole {
      */
 
     public int getIntegerInput(String message) {
-        try {
-            return Integer.parseInt(System.console().readLine(message));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                return Integer.parseInt(scanner.nextLine());
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid integer value.");
+            }
         }
     }
 }

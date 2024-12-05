@@ -54,6 +54,19 @@ public class MyConsole {
     }
 
     /**
+     * Method to print a collection of any type in the console.
+     *
+     * @param message The function receives a message and prints it in the console.
+     */
+
+    public <T> void printMessage(String message, List<T> list) {
+        System.out.println(message);
+        for (T element : list) {
+            System.out.print(element + " ");
+        }
+    }
+
+    /**
      * Method for any type of console input.
      *
      * @param message The function receives a message and prints it in the console.

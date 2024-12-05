@@ -83,4 +83,38 @@ public class MyConsole {
             }
         }
     }
+
+    /**
+     * Method to request input of a float value.
+     *
+     * @return Returns the float value entered by the user.
+     */
+
+    public float getFloatInput() {
+        while (true) {
+            try {
+                return Float.parseFloat(scanner.nextLine());
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid float value.");
+            }
+        }
+    }
+
+    /**
+     * Method to request input of a float value.
+     *
+     * @param message The function receives a message and prints it in the console.
+     * @return Returns the float value entered by the user.
+     */
+
+    public float getFloatInput(String message) {
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                return Float.parseFloat(scanner.nextLine());
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid float value.");
+            }
+        }
+    }
 }

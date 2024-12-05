@@ -6,12 +6,12 @@ public class Console extends Colors {
     StringBuilder styles = new StringBuilder();
 
     public <T> Console print(T value) {
-        System.out.println(value);
+        System.out.println(styles.toString() + value);
         return this;
     }
 
     public Console reset() {
-        System.out.println(RESET);
+        styles.append(RESET);
         return this;
     }
 

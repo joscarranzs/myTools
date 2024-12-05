@@ -2,7 +2,7 @@
  * The myConsole class attempts to facilitate interaction with the console.
  *
  * @author Jose Carranza
- * @since 1.0
+ * @since 1.0.1
  */
 
 
@@ -64,6 +64,123 @@ public class MyConsole {
         System.out.println(message);
         for (T element : list) {
             System.out.print(element + " ");
+        }
+    }
+
+
+    /**
+     * This method allows you to obtain a value of type int.
+     *
+     * @param message The message displayed on the console.
+     * @return The value of type int.
+     */
+
+    public int getIntegerInput(String message) {
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                String input = scanner.nextLine();
+                return Integer.parseInt(input);
+            } catch (Exception e) {
+                System.out.println("Invalid input. " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * This method allows obtaining a value of type float.
+     *
+     * @param message The message displayed on the console.
+     * @return The value of type float.
+     */
+
+    public float getFloatInput(String message) {
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                String input = scanner.nextLine();
+                return Float.parseFloat(input);
+            } catch (Exception e) {
+                System.out.println("Invalid input. " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * This method allows obtaining a value of type double.
+     *
+     * @param message The message displayed on the console.
+     * @return The value of type double.
+     */
+
+    public double getDoubleInput(String message) {
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                String input = scanner.nextLine();
+                return Double.parseDouble(input);
+            } catch (Exception e) {
+                System.out.println("Invalid input. " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * This method allows obtaining a value of type boolean.
+     *
+     * @param message The message displayed on the console.
+     * @return The value of type boolean.
+     */
+
+    public boolean getBooleanInput(String message) {
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                String input = scanner.nextLine();
+                return Boolean.parseBoolean(input);
+            } catch (Exception e) {
+                System.out.println("Invalid input. " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * This method allows obtaining a value of type char.
+     *
+     * @param message The message displayed on the console.
+     * @return The value of type char.
+     */
+
+    public char getCharInput(String message) {
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                String input = scanner.nextLine();
+                return input.charAt(0);
+            } catch (Exception e) {
+                System.out.println("Invalid input. " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * This method allows obtaining a value of type String.
+     *
+     * @param message The message displayed on the console.
+     * @return The value of type String.
+     */
+
+    public String getStringInput(String message) {
+        while (true) {
+            try {
+                System.out.print(message + " ");
+                String input = scanner.nextLine();
+
+                if (input.isEmpty()) System.out.println("Empty input.");
+                else return input;
+            } catch (Exception e) {
+                System.out.println("Invalid input. " + e.getMessage());
+            }
         }
     }
 

@@ -41,22 +41,17 @@ public class MyConsole {
             String osName = System.getProperty("os.name").toLowerCase();
 
             if (osName.contains("windows")) {
-                // En Windows, limpia la consola con "cls"
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                new ProcessBuilder("cmd", "/c", "pause").inheritIO().start().waitFor();
             } else {
-                // En Linux, valida la shell (bash o fish)
                 String shell = System.getenv("SHELL");
                 if (shell != null) {
                     if (shell.contains("fish")) {
-                        // Pausa en fish shell
-                        System.out.println("Presiona Enter para continuar...");
-                        new ProcessBuilder("fish", "-c", "read").inheritIO().start().waitFor();
+                        new ProcessBuilder("fish", "-c", "read > /dev/null").inheritIO().start().waitFor();
                     } else if (shell.contains("bash")) {
-                        // Pausa en bash shell
-                        System.out.println("Presiona Enter para continuar...");
                         new ProcessBuilder("bash", "-c", "read -p 'Presiona Enter para continuar...'").inheritIO().start().waitFor();
                     } else {
-                        System.out.println("Shell no compatible para pausa.");
+                        System.out.println("Presiona Enter para continuar...");
+                        new ProcessBuilder("sh", "-c", "read").inheritIO().start().waitFor();
                     }
                 } else {
                     System.out.println("No se pudo determinar la shell.");

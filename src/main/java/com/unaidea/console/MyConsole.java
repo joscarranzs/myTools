@@ -161,6 +161,9 @@ public class MyConsole {
             try {
                 System.out.print(message + " ");
                 String input = scanner.nextLine();
+
+                if (!input.equalsIgnoreCase("True") && !input.equalsIgnoreCase("False")) System.out.println("Invalid input.");
+                else return Boolean.parseBoolean(input);
                 return Boolean.parseBoolean(input);
             } catch (Exception e) {
                 System.out.println("Invalid input. " + e.getMessage());
@@ -180,7 +183,9 @@ public class MyConsole {
             try {
                 System.out.print(message + " ");
                 String input = scanner.nextLine();
-                return input.charAt(0);
+
+                if (input.length() != 1) System.out.println("Invalid input.");
+                else return input.charAt(0);
             } catch (Exception e) {
                 System.out.println("Invalid input. " + e.getMessage());
             }

@@ -12,4 +12,8 @@ public class MyConsole {
             e.printStackTrace();
         }
     }
+
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
 }

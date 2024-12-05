@@ -269,4 +269,24 @@ public class MyConsole {
             }
         }
     }
+
+    /**
+     * Method to print a new line in the console.
+     */
+
+    public void newLine() {
+        System.out.println();
+    }
+
+    /**
+     * Method to print a new line in the console.
+     *
+     * @param lines The number of lines to print.
+     */
+
+    public void newLine(int lines) {
+        for (int i = 0; i < lines; i++) {
+            System.out.println();
+        }
+    }
 }

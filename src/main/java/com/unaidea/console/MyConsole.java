@@ -37,6 +37,7 @@ public class MyConsole {
      *
      * @param message The function receives a message and prints it in the console.
      */
+
     public void printMessage(String message) {
         System.out.println(message);
     }

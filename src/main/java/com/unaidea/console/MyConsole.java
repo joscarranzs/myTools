@@ -106,7 +106,7 @@ public class MyConsole {
                 String input = scanner.nextLine();
                 return Integer.parseInt(input);
             } catch (Exception e) {
-                System.out.println("Invalid input. " + e.getMessage());
+                System.out.println("Invalid input, not an integer. ");
             }
         }
     }
@@ -125,7 +125,7 @@ public class MyConsole {
                 String input = scanner.nextLine();
                 return Float.parseFloat(input);
             } catch (Exception e) {
-                System.out.println("Invalid input. " + e.getMessage());
+                System.out.println("Invalid input, not a float. ");
             }
         }
     }
@@ -144,7 +144,7 @@ public class MyConsole {
                 String input = scanner.nextLine();
                 return Double.parseDouble(input);
             } catch (Exception e) {
-                System.out.println("Invalid input. " + e.getMessage());
+                System.out.println("Invalid input, not a double. ");
             }
         }
     }
@@ -162,11 +162,13 @@ public class MyConsole {
                 System.out.print(message + " ");
                 String input = scanner.nextLine();
 
-                if (!input.equalsIgnoreCase("True") && !input.equalsIgnoreCase("False")) System.out.println("Invalid input.");
-                else return Boolean.parseBoolean(input);
-                return Boolean.parseBoolean(input);
+                if (!input.equalsIgnoreCase("True") && !input.equalsIgnoreCase("False")) {
+                    throw new IllegalArgumentException("Invalid input, not a boolean");
+                } else {
+                    return Boolean.parseBoolean(input);
+                }
             } catch (Exception e) {
-                System.out.println("Invalid input. " + e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -184,10 +186,13 @@ public class MyConsole {
                 System.out.print(message + " ");
                 String input = scanner.nextLine();
 
-                if (input.length() != 1) System.out.println("Invalid input.");
-                else return input.charAt(0);
+                if (input.length() != 1) {
+                    throw new IllegalArgumentException("Invalid input, not a char");
+                } else {
+                    return input.charAt(0);
+                }
             } catch (Exception e) {
-                System.out.println("Invalid input. " + e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -205,10 +210,13 @@ public class MyConsole {
                 System.out.print(message + " ");
                 String input = scanner.nextLine();
 
-                if (input.isEmpty()) System.out.println("Empty input.");
-                else return input;
+                if (input.isEmpty()) {
+                    throw new IllegalArgumentException("Empty input.");
+                } else {
+                    return input;
+                }
             } catch (Exception e) {
-                System.out.println("Invalid input. " + e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
     }

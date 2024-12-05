@@ -1,0 +1,22 @@
+package com.unaidea.consoleStyler;
+
+import com.unaidea.consoleStyler.styler.Colors;
+
+public class Console extends Colors {
+    StringBuilder styles = new StringBuilder();
+
+    public <T> Console print(T value) {
+        System.out.println(value);
+        return this;
+    }
+
+    public Console reset() {
+        System.out.println(RESET);
+        return this;
+    }
+
+    public Console bold() {
+        styles.append(BRIGHT_BLACK);
+        return this;
+    }
+}

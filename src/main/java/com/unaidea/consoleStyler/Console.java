@@ -10,6 +10,11 @@ public class Console extends Colors {
         return this;
     }
 
+    public <T> Console red() {
+        styles.append(RED);
+        return this;
+    }
+
     public Console reset() {
         styles.append(RESET);
         return this;

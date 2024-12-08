@@ -3,7 +3,7 @@
 # Configuración
 set REMOTE "origin"           # Cambia esto si usas un remoto diferente
 set OLD_TAG "v1.0.1"          # Tag antiguo
-set NEW_TAG "v1.1.0"          # Tag nuevo
+set NEW_TAG "v2.0.0"          # Tag nuevo
 set COMMIT_TO_TAG "HEAD"      # Commit al que apunta el tag nuevo (por defecto el último commit)
 
 # Eliminar el tag local si existe

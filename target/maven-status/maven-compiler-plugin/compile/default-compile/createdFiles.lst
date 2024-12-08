@@ -1,4 +1,2 @@
-com/unaidea/console/MyConsole.class
-com/unaidea/App.class
-com/unaidea/consoleStyler/Console.class
-com/unaidea/consoleStyler/styler/Colors.class
+com/test/Test.class
+com/unaidea/console/Output.class
